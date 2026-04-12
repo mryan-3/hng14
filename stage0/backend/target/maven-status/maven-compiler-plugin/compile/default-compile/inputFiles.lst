@@ -1,0 +1,8 @@
+/home/ryanm/Documents/projects/work/hng14/stage0/backend/src/main/java/com/hng14/stage0/Stage0Application.java
+/home/ryanm/Documents/projects/work/hng14/stage0/backend/src/main/java/com/hng14/stage0/config/WebConfig.java
+/home/ryanm/Documents/projects/work/hng14/stage0/backend/src/main/java/com/hng14/stage0/controllers/ClassifyController.java
+/home/ryanm/Documents/projects/work/hng14/stage0/backend/src/main/java/com/hng14/stage0/dto/ClassifyApiResponse.java
+/home/ryanm/Documents/projects/work/hng14/stage0/backend/src/main/java/com/hng14/stage0/dto/ErrorResponse.java
+/home/ryanm/Documents/projects/work/hng14/stage0/backend/src/main/java/com/hng14/stage0/dto/GenderizeResponse.java
+/home/ryanm/Documents/projects/work/hng14/stage0/backend/src/main/java/com/hng14/stage0/exceptions/GlobalExceptionHandler.java
+/home/ryanm/Documents/projects/work/hng14/stage0/backend/src/main/java/com/hng14/stage0/services/ClassifyService.java
