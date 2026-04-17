@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HNG Stage 0 - Testable Todo Card</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="app-container">
+        <article class="todo-card" data-testid="test-todo-card">
+            <header class="todo-header">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="todo-checkbox" data-testid="test-todo-complete-toggle">
+                    <label for="todo-checkbox" class="sr-only">Mark task as complete</label>
+                </div>
+                <div class="title-area">
+                    <h2 class="todo-title" data-testid="test-todo-title">Architect Frontend Architecture</h2>
+                    <div class="priority-badge" data-testid="test-todo-priority" aria-label="Priority: High">
+                        <span class="priority-dot" data-testid="test-todo-priority-indicator"></span>
+                        <span class="priority-text">High</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="todo-content">
+                <div data-testid="test-todo-collapsible-section" class="collapsible-content collapsed">
+                    <p class="todo-description" data-testid="test-todo-description">
+                        Design and implement a testable, accessible, and responsive todo card component that captures the energy of a high-growth startup.
+                    </p>
+                </div>
+                <button class="expand-toggle" data-testid="test-todo-expand-toggle" aria-expanded="false">
+                    <span>Show More</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
+                </button>
+                
+                <div class="todo-details">
+                    <div class="detail-row">
+                        <!-- Calendar Icon SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z"></path></svg>
+                        <time datetime="2026-04-12T14:00:00Z" data-testid="test-todo-due-date" class="due-date">Due Apr 12, 2026</time>
+                    </div>
+                    <div class="detail-row" aria-live="polite">
+                        <!-- Clock Icon SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-12.12-2.72l-32-48a8,8,0,1,1,13.31-8.89L124.69,112H184A8,8,0,0,1,192,128Z"></path></svg>
+                        <time data-testid="test-todo-time-remaining" class="time-remaining">Calculating...</time>
+                        <span data-testid="test-todo-overdue-indicator" class="overdue-badge hidden">Overdue</span>
+                    </div>
+                </div>
+
+                <div class="todo-footer-meta">
+                    <div class="status-box">
+                        <span class="status-label">Status</span>
+                        <div class="status-control-wrapper">
+                            <div class="status-indicator-box">
+                                <strong data-testid="test-todo-status" class="status-indicator">Pending</strong>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
+                            </div>
+                            <select data-testid="test-todo-status-control" class="status-select" aria-label="Change status">
+                                <option value="Pending">Pending</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Done">Done</option>
+                            </select>
+                        </div>
+                    </div>
+                    <ul class="tag-list" data-testid="test-todo-tags" role="list">
+                        <li class="tag-item" data-testid="test-todo-tag-work">work</li>
+                        <li class="tag-item" data-testid="test-todo-tag-urgent">urgent</li>
+                        <li class="tag-item" data-testid="test-todo-tag-design">design</li>
+                    </ul>
+                </div>
+            </div>
+
+            <footer class="todo-actions">
+                <button class="action-btn edit-btn" data-testid="test-todo-edit-button" aria-label="Edit task">
+                    <!-- Pencil Icon SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM92.69,208H48V163.31l88-88L180.69,120ZM192,108.68,147.31,64l24-24L216,84.68Z"></path></svg>
+                    <span>Edit</span>
+                </button>
+                <button class="action-btn delete-btn" data-testid="test-todo-delete-button" aria-label="Delete task">
+                    <!-- Trash Icon SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+                    <span>Delete</span>
+                </button>
+            </footer>
+
+            <!-- Edit Form Container -->
+            <div data-testid="test-todo-edit-form" class="edit-form-container hidden">
+                <form id="todo-edit-form">
+                    <div class="form-group">
+                        <label for="edit-title">Title</label>
+                        <input type="text" id="edit-title" data-testid="test-todo-edit-title-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-description">Description</label>
+                        <textarea id="edit-description" data-testid="test-todo-edit-description-input" rows="3"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit-priority">Priority</label>
+                            <select id="edit-priority" data-testid="test-todo-edit-priority-select">
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-due-date">Due Date</label>
+                            <input type="datetime-local" id="edit-due-date" data-testid="test-todo-edit-due-date-input">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" data-testid="test-todo-cancel-button" class="btn-cancel">Cancel</button>
+                        <button type="submit" data-testid="test-todo-save-button" class="btn-save">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </article>
+    </main>
+    <script src="todo-card.js"></script>
+</body>
+</html>
