@@ -1,36 +1,65 @@
-# Stage 1 Backend - Profile Intelligence Service
+# Profile Intelligence Service - HNG Stage 1
 
-## Overview
-A Spring Boot service that enriches profile names using multiple external APIs (Genderize, Agify, Nationalize) and persists the data in a database.
+A Spring Boot backend service that integrates multiple third-party APIs to enrich profile data, persists results in an H2 database, and provides a RESTful management API.
 
 ## Features
-- **Data Enrichment**: Integrated with 3 third-party APIs for gender, age, and nationality prediction.
-- **Idempotency**: Automatic check to prevent duplicate profiles for the same name.
-- **RESTful Endpoints**:
-  - `POST /api/profiles`: Create/Enrich a profile.
-  - `GET /api/profiles/{id}`: Retrieve a specific profile.
-  - `GET /api/profiles`: List profiles with optional filtering (gender, country_id, age_group).
-  - `DELETE /api/profiles/{id}`: Remove a profile.
-- **Data Standards**:
-  - **UUID v7** for all record IDs.
-  - **ISO 8601 UTC** timestamps.
-  - **JSON** responses following strict naming conventions.
-- **Error Handling**: Detailed mapping for upstream API failures (502) and input validation (400, 422).
-- **CORS**: Enabled `Access-Control-Allow-Origin: *` for grading script access.
+- **Multi-API Integration**: Aggregates data from Genderize, Agify, and Nationalize.
+- **Data Persistence**: Uses Spring Data JPA with an H2 in-memory database.
+- **Idempotency**: Intelligently handles duplicate name submissions.
+- **UUID v7**: All profile IDs follow the UUID v7 standard (time-ordered).
+- **ISO 8601 UTC**: All timestamps are formatted in UTC.
+- **CORS Support**: Global CORS enabled for all origins.
 
-## Tech Stack
-- Java 21
-- Spring Boot 3.4
-- Spring Data JPA
-- H2 Database (In-memory)
-- Lombok
-- java-uuid-generator (for UUID v7)
+## Prerequisites
+- **Java 21** or higher.
+- **Maven 3.x** (or use the included wrapper).
 
-## How to Run Locally
-1. Navigate to `stage1/backend`.
-2. Run `./mvnw spring-boot:run` (or use your IDE).
-3. The server will start at `http://localhost:8080`.
+## Getting Started
 
-## API Documentation
-- Use `POST /api/profiles` with `{ "name": "ella" }` to start enriching data.
-- Use `GET /api/profiles` to see the results.
+### 1. Clone the repository
+```bash
+git clone <your-repo-url>
+cd hng14/stage1/backend
+```
+
+### 2. Run the application
+Using the Maven wrapper:
+```bash
+./mvnw spring-boot:run
+```
+Or if you have Maven installed:
+```bash
+mvn spring-boot:run
+```
+
+The server will start at `http://localhost:8080`.
+
+## API Endpoints
+
+### Create a Profile
+```bash
+curl -X POST http://localhost:8080/api/profiles \
+     -H "Content-Type: application/json" \
+     -d '{"name": "ella"}'
+```
+
+### Get a Profile by ID
+```bash
+curl http://localhost:8080/api/profiles/{uuid-v7-id}
+```
+
+### List/Filter Profiles
+```bash
+curl "http://localhost:8080/api/profiles?gender=female&country_id=CD"
+```
+
+### Delete a Profile
+```bash
+curl -X DELETE http://localhost:8080/api/profiles/{uuid-v7-id}
+```
+
+## Database Console
+You can access the H2 console at `http://localhost:8080/h2-console` with the following credentials:
+- **JDBC URL**: `jdbc:h2:mem:profiledb`
+- **User Name**: `sa`
+- **Password**: (leave empty)

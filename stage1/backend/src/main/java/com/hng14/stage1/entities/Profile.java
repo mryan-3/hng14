@@ -1,5 +1,7 @@
 package com.hng14.stage1.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -27,23 +29,30 @@ public class Profile {
 
     private String gender;
 
+    @JsonProperty("gender_probability")
     @Column(name = "gender_probability")
     private Double genderProbability;
 
+    @JsonProperty("sample_size")
     @Column(name = "sample_size")
     private Integer sampleSize;
 
     private Integer age;
 
+    @JsonProperty("age_group")
     @Column(name = "age_group")
     private String ageGroup;
 
+    @JsonProperty("country_id")
     @Column(name = "country_id")
     private String countryId;
 
+    @JsonProperty("country_probability")
     @Column(name = "country_probability")
     private Double countryProbability;
 
+    @JsonProperty("created_at")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "UTC")
     @Column(name = "created_at", nullable = false)
     private OffsetDateTime createdAt;
 }
