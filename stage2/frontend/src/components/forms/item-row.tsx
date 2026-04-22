@@ -18,7 +18,7 @@ interface ItemRowProps {
 
 export default function ItemRow({ item, index, onUpdate, onRemove }: ItemRowProps) {
   return (
-    <div className="grid grid-cols-4 md:grid-cols-[2.5fr_0.6fr_1fr_0.7fr_auto] gap-4 items-end">
+    <div className="grid grid-cols-4 md:grid-cols-[2.5fr_0.8fr_1fr_0.7fr_auto] gap-4 items-end">
       <div className="col-span-4 md:col-span-1">
         <Label className="md:hidden">Item Name</Label>
         <Input 
@@ -33,8 +33,8 @@ export default function ItemRow({ item, index, onUpdate, onRemove }: ItemRowProp
         <Input 
           type="number" 
           value={item.qty} 
-          onChange={(e) => onUpdate(index, 'qty', e.target.value)} 
-          className="text-center px-2 md:py-[14px]" 
+          onChange={(e) => onUpdate(index, 'qty', parseInt(e.target.value) || 0)} 
+          className="text-center px-1 md:py-[14px]" 
         />
       </div>
 

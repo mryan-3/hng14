@@ -17,7 +17,15 @@ interface InvoiceFormProps {
 }
 
 export default function InvoiceForm({ isOpen, onClose, initialData }: InvoiceFormProps) {
+  const getTodayFormatted = () => {
+    const today = new Date();
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return `${today.getDate()} ${months[today.getMonth()]} ${today.getFullYear()}`;
+  };
+
   const [items, setItems] = useState<Item[]>(initialData?.items || []);
+  const [invoiceDate, setInvoiceDate] = useState(initialData?.createdAt || getTodayFormatted());
+  const [paymentTerms, setPaymentTerms] = useState(initialData?.paymentTerms || 30);
   
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
@@ -30,6 +38,19 @@ export default function InvoiceForm({ isOpen, onClose, initialData }: InvoiceFor
       document.body.style.overflow = 'unset';
     };
   }, [isOpen, onClose]);
+
+  // Sync state if initialData changes (e.g. when opening different invoices)
+  useEffect(() => {
+    if (initialData) {
+      setItems(initialData.items || []);
+      setInvoiceDate(initialData.createdAt || getTodayFormatted());
+      setPaymentTerms(initialData.paymentTerms || 30);
+    } else {
+      setItems([]);
+      setInvoiceDate(getTodayFormatted());
+      setPaymentTerms(30);
+    }
+  }, [initialData, isOpen]);
 
   return (
     <div className={`fixed inset-0 z-40 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'} overflow-x-hidden`}>
@@ -47,19 +68,19 @@ export default function InvoiceForm({ isOpen, onClose, initialData }: InvoiceFor
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
               <DatePicker 
                 label="Invoice Date" 
-                value={initialData?.createdAt || '21 Aug 2021'} 
-                onChange={() => {}} 
+                value={invoiceDate} 
+                onChange={setInvoiceDate} 
               />
               <CustomSelect 
                 label="Payment Terms" 
-                value={initialData?.paymentTerms || 30} 
+                value={paymentTerms} 
                 options={[
                   { label: 'Net 1 Day', value: 1 },
                   { label: 'Net 7 Days', value: 7 },
                   { label: 'Net 14 Days', value: 14 },
                   { label: 'Net 30 Days', value: 30 },
                 ]} 
-                onChange={() => {}} 
+                onChange={(val) => setPaymentTerms(Number(val))} 
               />
             </div>
 

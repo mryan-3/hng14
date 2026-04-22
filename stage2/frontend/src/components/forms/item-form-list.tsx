@@ -31,7 +31,7 @@ export default function ItemFormList({ items, onChange }: ItemFormListProps) {
     <section className="flex flex-col">
       <h3 className="text-sm md:text-lg font-bold text-[#777F98] dark:text-[#777F98] mb-4">Item List</h3>
       
-      <div className="hidden md:grid grid-cols-[2.5fr_0.6fr_1fr_0.7fr_auto] gap-4 mb-4 text-xs font-medium text-text-gray dark:text-text-gray-light">
+      <div className="hidden md:grid grid-cols-[2.5fr_0.8fr_1fr_0.7fr_auto] gap-4 mb-4 text-xs font-medium text-text-gray dark:text-text-gray-light">
         <p>Item Name</p>
         <p>Qty.</p>
         <p>Price</p>

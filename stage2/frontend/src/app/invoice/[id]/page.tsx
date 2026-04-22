@@ -29,9 +29,12 @@ const MOCK_INVOICES = [
   },
 ];
 
+import InvoiceForm from '@/components/forms/invoice-form';
+
 export default function InvoiceDetail() {
   const router = useRouter();
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isEditFormOpen, setIsEditFormOpen] = useState(false);
   const invoice = MOCK_INVOICES[0];
   
   return (
@@ -46,7 +49,7 @@ export default function InvoiceDetail() {
       <InvoiceDetailHeader 
         status={invoice.status} 
         onDelete={() => setIsDeleteModalOpen(true)} 
-        onEdit={() => {}} 
+        onEdit={() => setIsEditFormOpen(true)} 
         onMarkAsPaid={() => {}} 
       />
 
@@ -54,6 +57,12 @@ export default function InvoiceDetail() {
         <InvoiceDetailInfo {...invoice} />
         <InvoiceDetailTable items={invoice.items} total={invoice.total} />
       </div>
+
+      <InvoiceForm 
+        isOpen={isEditFormOpen} 
+        onClose={() => setIsEditFormOpen(false)} 
+        initialData={invoice} 
+      />
 
       {/* Mobile Footer Actions */}
       <div className="md:hidden flex items-center justify-center gap-2 bg-white dark:bg-secondary-dark p-6 fixed bottom-0 left-0 w-full shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">

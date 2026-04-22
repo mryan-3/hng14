@@ -47,9 +47,9 @@ export default function CustomSelect({ label, options, value, onChange, classNam
           isOpen ? 'border-primary-purple' : 'border-text-gray-light dark:border-secondary-dark-light'
         }`}
       >
-        <span>{selectedOption?.label}</span>
+        <span>{selectedOption?.label || value}</span>
         <div className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
-          <Image src="/filter.svg" alt="" width={11} height={7} />
+          <svg width="11" height="7" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4.223 4.223L9.446 1" stroke="#7C5DFA" strokeWidth="2" fill="none" fillRule="evenodd"/></svg>
         </div>
       </button>
 
