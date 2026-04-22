@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import StatusBadge, { InvoiceStatus } from './status-badge';
+import StatusBadge, { InvoiceStatus } from '../ui/status-badge';
 
 export interface InvoiceCardProps {
   id: string;

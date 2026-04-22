@@ -31,7 +31,7 @@ export default function StatusBadge({ status }: StatusBadgeProps) {
   const current = statusStyles[status];
 
   return (
-    <div className={`flex-center w-[104px] h-10 rounded-md ${current.bg} ${current.text} font-bold text-sm capitalize transition-colors`}>
+    <div className={`flex items-center justify-center w-[104px] h-10 rounded-md ${current.bg} ${current.text} font-bold text-sm capitalize transition-colors`}>
       <span className={`w-2 h-2 rounded-full mr-2 ${current.dot}`} />
       {current.label}
     </div>
