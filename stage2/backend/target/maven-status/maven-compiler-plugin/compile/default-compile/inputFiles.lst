@@ -1,0 +1,13 @@
+/home/ryanm/Documents/projects/work/hng14/stage2/backend/src/main/java/com/hng/stage2/Stage2Application.java
+/home/ryanm/Documents/projects/work/hng14/stage2/backend/src/main/java/com/hng/stage2/config/WebConfig.java
+/home/ryanm/Documents/projects/work/hng14/stage2/backend/src/main/java/com/hng/stage2/controllers/ProfileController.java
+/home/ryanm/Documents/projects/work/hng14/stage2/backend/src/main/java/com/hng/stage2/dto/ErrorResponse.java
+/home/ryanm/Documents/projects/work/hng14/stage2/backend/src/main/java/com/hng/stage2/dto/PagedResponse.java
+/home/ryanm/Documents/projects/work/hng14/stage2/backend/src/main/java/com/hng/stage2/entities/Profile.java
+/home/ryanm/Documents/projects/work/hng14/stage2/backend/src/main/java/com/hng/stage2/exceptions/GlobalExceptionHandler.java
+/home/ryanm/Documents/projects/work/hng14/stage2/backend/src/main/java/com/hng/stage2/repositories/ProfileRepository.java
+/home/ryanm/Documents/projects/work/hng14/stage2/backend/src/main/java/com/hng/stage2/repositories/ProfileSpecification.java
+/home/ryanm/Documents/projects/work/hng14/stage2/backend/src/main/java/com/hng/stage2/services/DataSeeder.java
+/home/ryanm/Documents/projects/work/hng14/stage2/backend/src/main/java/com/hng/stage2/services/ProfileService.java
+/home/ryanm/Documents/projects/work/hng14/stage2/backend/src/main/java/com/hng/stage2/services/QueryParser.java
+/home/ryanm/Documents/projects/work/hng14/stage2/backend/src/main/java/com/hng/stage2/utils/CountryCodeMapper.java

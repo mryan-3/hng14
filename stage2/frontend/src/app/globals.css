@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --font-league-spartan: var(--font-league-spartan);
+
+  /* Colors based on Figma Design Tokens */
+  --color-primary-purple: #7c5dfa;
+  --color-primary-purple-light: #9277ff;
+  
+  --color-secondary-dark: #1e2139;
+  --color-secondary-dark-light: #252945;
+  
+  --color-background-light: #f8f8fb;
+  --color-background-dark: #141625;
+  
+  --color-text-gray: #888eb0;
+  --color-text-gray-light: #dfe3fa;
+  --color-text-blue-gray: #7e88c3;
+  --color-text-dark: #0c0e16;
+  
+  --color-error: #ec5757;
+  --color-error-light: #ff9797;
+
+  /* Custom Sidebar Colors */
+  --color-sidebar-bg: #373b53;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  body {
+    @apply font-league-spartan antialiased text-text-dark dark:text-white transition-colors duration-300;
+  }
+}
+
+:root {
+  --background: #f8f8fb;
+  --foreground: #0c0e16;
+}
+
+.dark {
+  --background: #141625;
+  --foreground: #ffffff;
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}
