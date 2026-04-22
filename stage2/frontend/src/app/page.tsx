@@ -21,22 +21,22 @@ export default function Home() {
   const [selectedStatuses, setSelectedStatuses] = useState<string[]>([]);
 
   const toggleStatus = (status: string) => {
-    setSelectedStatuses((prev) => 
-      prev.includes(status) 
-        ? prev.filter((s) => s !== status) 
+    setSelectedStatuses((prev) =>
+      prev.includes(status)
+        ? prev.filter((s) => s !== status)
         : [...prev, status]
     );
   };
 
-  const filteredInvoices = selectedStatuses.length > 0 
+  const filteredInvoices = selectedStatuses.length > 0
     ? MOCK_INVOICES.filter((invoice) => selectedStatuses.includes(invoice.status))
     : MOCK_INVOICES;
 
   return (
     <div className="flex flex-col gap-8 md:gap-14 lg:gap-16">
-      <HomeHeader 
-        count={filteredInvoices.length} 
-        onNewInvoice={() => setIsFormOpen(true)} 
+      <HomeHeader
+        count={filteredInvoices.length}
+        onNewInvoice={() => setIsFormOpen(true)}
         selectedStatuses={selectedStatuses}
         onToggleStatus={toggleStatus}
       />

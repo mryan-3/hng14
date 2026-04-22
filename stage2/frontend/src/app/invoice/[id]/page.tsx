@@ -29,6 +29,7 @@ const MOCK_INVOICES = [
   },
 ];
 
+import DetailFooter from '@/components/invoice/detail-footer';
 import InvoiceForm from '@/components/forms/invoice-form';
 
 export default function InvoiceDetail() {
@@ -64,12 +65,11 @@ export default function InvoiceDetail() {
         initialData={invoice} 
       />
 
-      {/* Mobile Footer Actions */}
-      <div className="md:hidden flex items-center justify-center gap-2 bg-white dark:bg-secondary-dark p-6 fixed bottom-0 left-0 w-full shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">
-        <Button variant="secondary" className="flex-1 !px-4" onClick={() => {}}>Edit</Button>
-        <Button variant="danger" className="flex-1 !px-4" onClick={() => setIsDeleteModalOpen(true)}>Delete</Button>
-        <Button variant="primary" className="flex-1 !px-4">Paid</Button>
-      </div>
+      <DetailFooter 
+        onDelete={() => setIsDeleteModalOpen(true)} 
+        onEdit={() => setIsEditFormOpen(true)} 
+        onMarkAsPaid={() => {}} 
+      />
 
       <ConfirmationModal 
         isOpen={isDeleteModalOpen} 

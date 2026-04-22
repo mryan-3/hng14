@@ -55,7 +55,7 @@ export default function ItemFormList({ items, onChange }: ItemFormListProps) {
         type="button"
         variant="ghost"
         onClick={addItem}
-        className="w-full text-[#7E88C3] dark:text-text-gray-light"
+        className="w-full text-[#7E88C3] dark:text-text-gray-light bg-[#F9FAFE] dark:bg-[#252945] !rounded-full font-bold"
       >
         + Add New Item
       </Button>

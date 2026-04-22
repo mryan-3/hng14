@@ -56,11 +56,24 @@ export default function InvoiceForm({ isOpen, onClose, initialData }: InvoiceFor
     }
   }, [initialData, isOpen, mounted]);
 
+  if (!mounted) return null;
+
   return (
     <div className={`fixed inset-0 z-40 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'} overflow-x-hidden`}>
       <div className="absolute inset-0 bg-[rgba(0,0,0,0.5)]" onClick={onClose} />
       <div className={`absolute top-0 left-0 h-full w-full md:w-[616px] lg:w-[719px] lg:pl-[103px] bg-white dark:bg-background-dark shadow-2xl transition-transform duration-500 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} overflow-y-auto overflow-x-hidden hide-scrollbar lg:rounded-r-[20px] flex flex-col`}>
-        <div className="flex-1 p-8 md:px-14 md:pt-14 md:pb-4">
+        <div className="flex-1 p-8 md:px-14 md:pt-14 md:pb-4 mt-[72px] lg:mt-0">
+          <button 
+            type="button" 
+            onClick={onClose} 
+            className="md:hidden flex items-center gap-6 mb-8 group w-fit"
+          >
+            <svg width="7" height="10" xmlns="http://www.w3.org/2000/svg" className="rotate-180">
+              <path d="M1 1l4 4-4 4" stroke="#7C5DFA" strokeWidth="2" fill="none" fillRule="evenodd" />
+            </svg>
+            <span className="text-xs font-bold text-text-dark dark:text-white group-hover:text-text-gray transition-colors">Go back</span>
+          </button>
+
           <h2 className="text-2xl font-bold text-text-dark dark:text-white mb-10 tracking-[-0.5px]">
             {initialData ? <>Edit <span className="text-text-gray">#</span>{initialData.id}</> : 'New Invoice'}
           </h2>

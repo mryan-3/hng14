@@ -24,7 +24,7 @@ export default function Sidebar() {
   const currentMode = mounted ? (theme === 'system' ? resolvedTheme : theme) : 'light';
 
   return (
-    <aside className="fixed top-0 left-0 z-50 flex flex-row items-center justify-between w-full h-20 bg-sidebar-bg lg:flex-col lg:w-[103px] lg:h-full lg:rounded-r-[20px] transition-all duration-300">
+    <aside className="fixed top-0 left-0 z-50 flex flex-row items-center justify-between w-full h-[72px] bg-sidebar-bg lg:flex-col lg:w-[103px] lg:h-full lg:rounded-r-[20px] transition-all duration-300">
       <Logo />
       <div className="flex flex-row items-center lg:flex-col lg:w-full lg:pb-6">
         <ThemeToggle theme={(currentMode as 'light' | 'dark')} onToggle={toggleTheme} />

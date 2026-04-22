@@ -19,8 +19,14 @@ export default function HomeHeader({ count, onNewInvoice, selectedStatuses, onTo
           Invoices
         </h1>
         <p className="text-sm font-medium text-text-gray dark:text-text-gray-light mt-1 md:mt-2">
-          <span className="hidden md:inline">There are </span>
-          {count === 0 ? 'no invoices' : `${count} total invoices`}
+          {count === 0 ? 'no invoices' : (
+            <span className="flex gap-1">
+              <span className="hidden md:inline">There are</span>
+              {count}
+              <span className="hidden md:inline">total</span>
+              invoices
+            </span>
+          )}
         </p>
       </div>
 

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 interface ThemeToggleProps {
@@ -8,6 +9,11 @@ interface ThemeToggleProps {
 }
 
 export default function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <button 
       onClick={onToggle}
@@ -15,12 +21,14 @@ export default function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
       aria-label="Toggle Theme"
     >
       <div className="relative w-5 h-5">
-        <Image 
-          src={theme === 'light' ? '/dark-theme-icon.svg' : '/light-mode.svg'} 
-          alt={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-          fill
-          className="object-contain transition-opacity duration-300"
-        />
+        {mounted && (
+          <Image 
+            src={theme === 'light' ? '/dark-theme-icon.svg' : '/light-mode.svg'} 
+            alt={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+            fill
+            className="object-contain transition-opacity duration-300"
+          />
+        )}
       </div>
     </button>
   );

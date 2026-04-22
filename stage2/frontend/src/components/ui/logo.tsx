@@ -7,7 +7,7 @@ export default function Logo() {
   return (
     <Link
       href="/"
-      className="relative flex items-center justify-center w-20 h-20 bg-primary-purple rounded-r-[20px] lg:w-[103px] lg:h-[103px] group overflow-hidden"
+      className="relative flex items-center justify-center w-[72px] h-[72px] lg:w-[103px] lg:h-[103px] bg-primary-purple rounded-r-[20px] group overflow-hidden"
     >
       {/* Background rectangle */}
       <div className="absolute top-0 left-0 w-full h-[103px]">
