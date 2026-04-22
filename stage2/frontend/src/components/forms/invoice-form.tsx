@@ -17,6 +17,7 @@ interface InvoiceFormProps {
 }
 
 export default function InvoiceForm({ isOpen, onClose, initialData }: InvoiceFormProps) {
+  const [mounted, setMounted] = useState(false);
   const getTodayFormatted = () => {
     const today = new Date();
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -24,10 +25,11 @@ export default function InvoiceForm({ isOpen, onClose, initialData }: InvoiceFor
   };
 
   const [items, setItems] = useState<Item[]>(initialData?.items || []);
-  const [invoiceDate, setInvoiceDate] = useState(initialData?.createdAt || getTodayFormatted());
+  const [invoiceDate, setInvoiceDate] = useState(initialData?.createdAt || '');
   const [paymentTerms, setPaymentTerms] = useState(initialData?.paymentTerms || 30);
   
   useEffect(() => {
+    setMounted(true);
     const handleEscape = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
     if (isOpen) {
       window.addEventListener('keydown', handleEscape);
@@ -41,16 +43,18 @@ export default function InvoiceForm({ isOpen, onClose, initialData }: InvoiceFor
 
   // Sync state if initialData changes (e.g. when opening different invoices)
   useEffect(() => {
-    if (initialData) {
-      setItems(initialData.items || []);
-      setInvoiceDate(initialData.createdAt || getTodayFormatted());
-      setPaymentTerms(initialData.paymentTerms || 30);
-    } else {
-      setItems([]);
-      setInvoiceDate(getTodayFormatted());
-      setPaymentTerms(30);
+    if (mounted) {
+      if (initialData) {
+        setItems(initialData.items || []);
+        setInvoiceDate(initialData.createdAt || getTodayFormatted());
+        setPaymentTerms(initialData.paymentTerms || 30);
+      } else {
+        setItems([]);
+        setInvoiceDate(getTodayFormatted());
+        setPaymentTerms(30);
+      }
     }
-  }, [initialData, isOpen]);
+  }, [initialData, isOpen, mounted]);
 
   return (
     <div className={`fixed inset-0 z-40 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'} overflow-x-hidden`}>

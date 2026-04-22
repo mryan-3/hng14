@@ -17,15 +17,32 @@ const MOCK_INVOICES: InvoiceCardProps[] = [
 ];
 
 export default function Home() {
-  const [invoices] = useState<InvoiceCardProps[]>(MOCK_INVOICES);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [selectedStatuses, setSelectedStatuses] = useState<string[]>([]);
+
+  const toggleStatus = (status: string) => {
+    setSelectedStatuses((prev) => 
+      prev.includes(status) 
+        ? prev.filter((s) => s !== status) 
+        : [...prev, status]
+    );
+  };
+
+  const filteredInvoices = selectedStatuses.length > 0 
+    ? MOCK_INVOICES.filter((invoice) => selectedStatuses.includes(invoice.status))
+    : MOCK_INVOICES;
 
   return (
     <div className="flex flex-col gap-8 md:gap-14 lg:gap-16">
-      <HomeHeader count={invoices.length} onNewInvoice={() => setIsFormOpen(true)} />
+      <HomeHeader 
+        count={filteredInvoices.length} 
+        onNewInvoice={() => setIsFormOpen(true)} 
+        selectedStatuses={selectedStatuses}
+        onToggleStatus={toggleStatus}
+      />
       <div className="flex flex-col gap-4">
-        {invoices.length > 0 ? (
-          invoices.map((invoice) => <InvoiceCard key={invoice.id} {...invoice} />)
+        {filteredInvoices.length > 0 ? (
+          filteredInvoices.map((invoice) => <InvoiceCard key={invoice.id} {...invoice} />)
         ) : (
           <EmptyState />
         )}

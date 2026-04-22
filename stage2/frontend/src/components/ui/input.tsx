@@ -27,6 +27,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 export function Input({ error, className = '', ...props }: InputProps) {
   return (
     <input
+      suppressHydrationWarning
       className={`w-full px-5 py-[14px] bg-white dark:bg-secondary-dark border rounded font-bold text-xs md:text-sm text-text-dark dark:text-white outline-none transition-all hover:border-primary-purple focus:border-primary-purple ${
         error 
           ? 'border-error focus:border-error' 

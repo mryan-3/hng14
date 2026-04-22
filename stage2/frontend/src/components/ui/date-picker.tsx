@@ -19,14 +19,18 @@ export default function DatePicker({ label, value, onChange, className = '' }: D
   const containerRef = useRef<HTMLDivElement>(null);
   
   // Parse initial value or default to today
-  const [viewDate, setViewDate] = useState(new Date());
+  const [viewDate, setViewDate] = useState(new Date(2021, 0, 1)); // Static safe date for SSR
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     if (value) {
       const parsed = new Date(value);
       if (!isNaN(parsed.getTime())) {
         setViewDate(parsed);
       }
+    } else {
+      setViewDate(new Date());
     }
   }, [value]);
 

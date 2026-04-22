@@ -16,6 +16,7 @@ export default function Logo() {
           alt=""
           fill
           className="object-cover"
+          priority
         />
       </div>
 
