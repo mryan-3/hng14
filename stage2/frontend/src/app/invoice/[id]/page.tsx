@@ -8,35 +8,21 @@ import ConfirmationModal from '@/components/ui/confirmation-modal';
 import InvoiceDetailHeader from '@/components/invoice/invoice-detail-header';
 import InvoiceDetailInfo from '@/components/invoice/invoice-detail-info';
 import InvoiceDetailTable from '@/components/invoice/invoice-detail-table';
-import Button from '@/components/ui/button';
-
-const MOCK_INVOICES = [
-  { 
-    id: 'XM9141', 
-    createdAt: '21 Aug 2021', 
-    dueDate: '20 Sep 2021', 
-    clientName: 'Alex Grim', 
-    clientEmail: 'alexgrim@mail.com', 
-    status: 'pending' as InvoiceStatus,
-    senderAddress: { street: '19 Union Terrace', city: 'London', postCode: 'E1 3EZ', country: 'United Kingdom' },
-    clientAddress: { street: '84 Church Way', city: 'Bradford', postCode: 'BD1 9PB', country: 'United Kingdom' },
-    description: 'Graphic Design', 
-    items: [
-      { name: 'Banner Design', qty: 1, price: 156.00, total: 156.00 }, 
-      { name: 'Email Design', qty: 2, price: 200.00, total: 400.00 }
-    ],
-    total: 556.00 
-  },
-];
-
 import DetailFooter from '@/components/invoice/detail-footer';
 import InvoiceForm from '@/components/forms/invoice-form';
+import { useInvoices } from '@/context/invoice-context';
 
 export default function InvoiceDetail() {
+  const { id } = useParams() as { id: string };
   const router = useRouter();
+  const { invoices, isLoaded, deleteInvoice, markAsPaid } = useInvoices();
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditFormOpen, setIsEditFormOpen] = useState(false);
-  const invoice = MOCK_INVOICES[0];
+  
+  const invoice = invoices.find(inv => inv.id === id);
+
+  if (!isLoaded) return null;
+  if (!invoice) return <div className="text-center py-20 text-text-dark dark:text-white font-bold">Invoice not found</div>;
   
   return (
     <div className="flex flex-col gap-6 md:gap-8 pb-32 lg:pb-14">
@@ -51,11 +37,11 @@ export default function InvoiceDetail() {
         status={invoice.status} 
         onDelete={() => setIsDeleteModalOpen(true)} 
         onEdit={() => setIsEditFormOpen(true)} 
-        onMarkAsPaid={() => {}} 
+        onMarkAsPaid={() => markAsPaid(invoice.id)} 
       />
 
       <div className="bg-white dark:bg-secondary-dark p-6 md:p-8 lg:p-12 rounded-lg shadow-sm flex flex-col gap-10 md:gap-14">
-        <InvoiceDetailInfo {...invoice} />
+        <InvoiceDetailInfo {...invoice} dueDate={invoice.paymentDue} />
         <InvoiceDetailTable items={invoice.items} total={invoice.total} />
       </div>
 
@@ -68,13 +54,16 @@ export default function InvoiceDetail() {
       <DetailFooter 
         onDelete={() => setIsDeleteModalOpen(true)} 
         onEdit={() => setIsEditFormOpen(true)} 
-        onMarkAsPaid={() => {}} 
+        onMarkAsPaid={() => markAsPaid(invoice.id)} 
       />
 
       <ConfirmationModal 
         isOpen={isDeleteModalOpen} 
         onClose={() => setIsDeleteModalOpen(false)} 
-        onConfirm={() => router.push('/')} 
+        onConfirm={() => {
+          deleteInvoice(invoice.id);
+          router.push('/');
+        }} 
         title="Confirm Deletion" 
         message={`Are you sure you want to delete invoice #${invoice.id}? This action cannot be undone.`} 
       />

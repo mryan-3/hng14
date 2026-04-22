@@ -12,10 +12,10 @@ export default function UserAvatar() {
       <div className="relative w-8 h-8 rounded-full overflow-hidden lg:w-10 lg:h-10 border border-transparent hover:border-primary-purple transition-colors cursor-pointer">
         {mounted && (
           <Image 
-            src="/vercel.svg" 
+            src="/person.svg" 
             alt="User Avatar" 
             fill
-            className="object-cover"
+            className="object-cover rounded-full!"
           />
         )}
       </div>

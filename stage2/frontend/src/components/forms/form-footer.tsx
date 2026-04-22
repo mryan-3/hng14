@@ -5,9 +5,11 @@ import Button from '../ui/button';
 interface FormFooterProps {
   initialData?: any;
   onClose: () => void;
+  onSaveDraft?: () => void;
+  onSaveSend: () => void;
 }
 
-export default function FormFooter({ initialData, onClose }: FormFooterProps) {
+export default function FormFooter({ initialData, onClose, onSaveDraft, onSaveSend }: FormFooterProps) {
   const isEdit = !!initialData;
 
   return (
@@ -18,7 +20,7 @@ export default function FormFooter({ initialData, onClose }: FormFooterProps) {
             <Button variant="secondary" onClick={onClose}>
               Cancel
             </Button>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" onClick={onSaveSend}>
               Save Changes
             </Button>
           </div>
@@ -28,10 +30,10 @@ export default function FormFooter({ initialData, onClose }: FormFooterProps) {
               Discard
             </Button>
             <div className="flex items-center gap-2">
-              <Button type="button" variant="dark">
+              <Button type="button" variant="dark" onClick={onSaveDraft}>
                 Save as Draft
               </Button>
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" onClick={onSaveSend}>
                 Save & Send
               </Button>
             </div>

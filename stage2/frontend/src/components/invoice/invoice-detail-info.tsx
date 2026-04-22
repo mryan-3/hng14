@@ -38,32 +38,37 @@ export default function InvoiceDetailInfo({
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-        <div className="flex flex-col justify-between gap-8">
-          <div>
-            <p className="text-xs md:text-sm font-medium text-text-gray dark:text-text-gray-light mb-4">Invoice Date</p>
-            <p className="text-base md:text-xl font-bold text-text-dark dark:text-white">{createdAt}</p>
-          </div>
-          <div>
-            <p className="text-xs md:text-sm font-medium text-text-gray dark:text-text-gray-light mb-4">Payment Due</p>
-            <p className="text-base md:text-xl font-bold text-text-dark dark:text-white">{dueDate}</p>
-          </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-8 md:gap-y-10">
+        {/* Col 1: Invoice Date */}
+        <div className="md:order-1">
+          <p className="text-xs md:text-sm font-medium text-text-gray dark:text-text-gray-light mb-3 md:mb-4">Invoice Date</p>
+          <p className="text-base md:text-xl font-bold text-text-dark dark:text-white">{createdAt}</p>
         </div>
 
-        <div>
-          <p className="text-xs md:text-sm font-medium text-text-gray dark:text-text-gray-light mb-4">Bill To</p>
-          <p className="text-base md:text-xl font-bold text-text-dark dark:text-white mb-3">{clientName}</p>
-          <div className="text-[11px] leading-[18px] md:text-xs font-medium text-text-gray dark:text-text-gray-light">
-            <p>{clientAddress.street}</p>
-            <p>{clientAddress.city}</p>
-            <p>{clientAddress.postCode}</p>
-            <p>{clientAddress.country}</p>
-          </div>
+        {/* Col 2: Bill To Name */}
+        <div className="md:order-2">
+          <p className="text-xs md:text-sm font-medium text-text-gray dark:text-text-gray-light mb-3 md:mb-4">Bill To</p>
+          <p className="text-base md:text-xl font-bold text-text-dark dark:text-white">{clientName}</p>
         </div>
 
-        <div className="col-span-2 md:col-span-1">
-          <p className="text-xs md:text-sm font-medium text-text-gray dark:text-text-gray-light mb-4">Sent to</p>
-          <p className="text-base md:text-xl font-bold text-text-dark dark:text-white break-all">{clientEmail}</p>
+        {/* Col 3: Sent To (Bottom on mobile) */}
+        <div className="col-span-2 md:col-span-1 order-last md:order-3">
+          <p className="text-xs md:text-sm font-medium text-text-gray dark:text-text-gray-light mb-3 md:mb-4">Sent to</p>
+          <p className="text-base md:text-xl font-bold text-text-dark dark:text-white truncate lg:overflow-visible">{clientEmail}</p>
+        </div>
+
+        {/* Col 1: Payment Due */}
+        <div className="md:order-4">
+          <p className="text-xs md:text-sm font-medium text-text-gray dark:text-text-gray-light mb-3 md:mb-4">Payment Due</p>
+          <p className="text-base md:text-xl font-bold text-text-dark dark:text-white">{dueDate}</p>
+        </div>
+
+        {/* Col 2: Bill To Address */}
+        <div className="md:order-5 md:-mt-8 text-[11px] leading-[18px] md:text-xs md:leading-[18px] font-medium text-text-gray dark:text-text-gray-light flex flex-col md:gap-1">
+          <p>{clientAddress.street}</p>
+          <p>{clientAddress.city}</p>
+          <p>{clientAddress.postCode}</p>
+          <p>{clientAddress.country}</p>
         </div>
       </div>
     </div>
