@@ -8,9 +8,9 @@ interface BillFromSectionProps {
 
 export default function BillFromSection({ initialData }: BillFromSectionProps) {
   return (
-    <section className="flex flex-col gap-6">
+    <section className="flex flex-col gap-4">
       <p className="text-primary-purple font-bold text-xs tracking-[-0.25px]">Bill From</p>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-4">
         <div>
           <Label>Street Address</Label>
           <Input defaultValue={initialData?.senderAddress?.street} />

@@ -39,7 +39,7 @@ export default function DatePicker({ label, value, onChange, className = '' }: D
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center justify-between w-full px-5 py-4 bg-white dark:bg-secondary-dark border rounded font-bold text-xs md:text-sm text-text-dark dark:text-white outline-none transition-all hover:border-primary-purple cursor-pointer ${
+        className={`flex items-center justify-between w-full px-5 py-[14px] bg-white dark:bg-secondary-dark border rounded font-bold text-xs md:text-sm text-text-dark dark:text-white outline-none transition-all hover:border-primary-purple cursor-pointer ${
           isOpen ? 'border-primary-purple' : 'border-text-gray-light dark:border-secondary-dark-light'
         }`}
       >

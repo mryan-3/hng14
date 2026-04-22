@@ -1,7 +1,7 @@
 'use client';
 
-import Button from '../ui/button';
 import ItemRow, { Item } from './item-row';
+import Button from '../ui/button';
 
 interface ItemFormListProps {
   items: Item[];
@@ -11,10 +11,6 @@ interface ItemFormListProps {
 export default function ItemFormList({ items, onChange }: ItemFormListProps) {
   const addItem = () => {
     onChange([...items, { name: '', qty: 1, price: 0, total: 0 }]);
-  };
-
-  const removeItem = (index: number) => {
-    onChange(items.filter((_, i) => i !== index));
   };
 
   const updateItem = (index: number, field: keyof Item, value: string | number) => {
@@ -27,24 +23,42 @@ export default function ItemFormList({ items, onChange }: ItemFormListProps) {
     onChange(newItems);
   };
 
+  const removeItem = (index: number) => {
+    onChange(items.filter((_, i) => i !== index));
+  };
+
   return (
-    <div className="flex flex-col gap-4">
-      <h3 className="text-[#777F98] text-[18px] font-bold tracking-[-0.38px] mb-4">Item List</h3>
-      <div className="hidden md:grid grid-cols-[3fr_1fr_1.5fr_1fr_auto] gap-4 mb-4 text-sm font-medium text-[#7E88C3]">
+    <section className="flex flex-col">
+      <h3 className="text-sm md:text-lg font-bold text-[#777F98] dark:text-[#777F98] mb-4">Item List</h3>
+      
+      <div className="hidden md:grid grid-cols-[2.5fr_0.6fr_1fr_0.7fr_auto] gap-4 mb-4 text-xs font-medium text-text-gray dark:text-text-gray-light">
         <p>Item Name</p>
         <p>Qty.</p>
         <p>Price</p>
         <p>Total</p>
-        <div className="w-4" />
+        <div className="w-[13px]" />
       </div>
+
       <div className="flex flex-col gap-12 md:gap-4 mb-4">
         {items.map((item, index) => (
-          <ItemRow key={index} item={item} index={index} onUpdate={updateItem} onRemove={removeItem} />
+          <ItemRow 
+            key={index} 
+            item={item} 
+            index={index} 
+            onUpdate={updateItem} 
+            onRemove={removeItem} 
+          />
         ))}
       </div>
-      <Button variant="secondary" className="w-full" onClick={addItem}>
+
+      <Button 
+        type="button"
+        variant="ghost"
+        onClick={addItem}
+        className="w-full text-[#7E88C3] dark:text-text-gray-light"
+      >
         + Add New Item
       </Button>
-    </div>
+    </section>
   );
 }
