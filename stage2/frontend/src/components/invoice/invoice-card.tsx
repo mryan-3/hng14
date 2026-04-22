@@ -18,7 +18,7 @@ export default function InvoiceCard({ id, dueDate, clientName, amount, status }:
   }).format(amount);
 
   return (
-    <Link 
+    <Link
       href={`/invoice/${id}`}
       className="group grid grid-cols-2 md:grid-cols-[auto_auto_auto_auto_auto_auto] items-center bg-white dark:bg-secondary-dark p-6 md:px-8 md:py-4 rounded-lg border border-transparent hover:border-primary-purple transition-all duration-300 shadow-sm"
     >
@@ -34,7 +34,7 @@ export default function InvoiceCard({ id, dueDate, clientName, amount, status }:
 
       {/* Date & Name Section - Desktop */}
       <div className="text-xs md:text-sm font-medium text-text-gray dark:text-text-gray-light md:w-28 lg:w-32">
-        <span className="md:hidden">Due </span>{dueDate}
+        <span className="">Due </span>{dueDate}
       </div>
 
       <div className="hidden md:block text-xs md:text-sm font-medium text-text-gray dark:text-text-gray-light md:w-28 lg:w-36">

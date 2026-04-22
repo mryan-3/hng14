@@ -11,7 +11,7 @@ export function Label({ children, error, className = '', ...props }: LabelProps)
   return (
     <label 
       className={`block text-xs font-medium mb-2 transition-colors ${
-        error ? 'text-error' : 'text-[#7E88C3] dark:text-text-gray-light'
+        error ? 'text-error' : 'text-text-blue-gray dark:text-text-gray-light'
       } ${className}`}
       {...props}
     >
@@ -27,10 +27,10 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 export function Input({ error, className = '', ...props }: InputProps) {
   return (
     <input
-      className={`w-full px-5 py-4 bg-white dark:bg-secondary-dark border rounded font-bold text-xs md:text-sm text-text-dark dark:text-white outline-none transition-all focus:border-primary-purple ${
+      className={`w-full px-5 py-4 bg-white dark:bg-secondary-dark border rounded font-bold text-xs md:text-sm text-text-dark dark:text-white outline-none transition-all hover:border-primary-purple focus:border-primary-purple ${
         error 
           ? 'border-error focus:border-error' 
-          : 'border-[#DFE3FA] dark:border-[#252945]'
+          : 'border-text-gray-light dark:border-secondary-dark-light'
       } ${className}`}
       {...props}
     />
@@ -43,7 +43,7 @@ export function Select({ error, className = '', children, ...props }: React.Sele
       className={`w-full px-5 py-4 bg-white dark:bg-secondary-dark border rounded font-bold text-xs md:text-sm text-text-dark dark:text-white outline-none transition-all focus:border-primary-purple appearance-none cursor-pointer ${
         error 
           ? 'border-error focus:border-error' 
-          : 'border-[#DFE3FA] dark:border-[#252945]'
+          : 'border-text-gray-light dark:border-secondary-dark-light'
       } ${className}`}
       {...props}
     >

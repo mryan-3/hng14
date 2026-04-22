@@ -14,7 +14,7 @@ interface InvoiceDetailTableProps {
 
 export default function InvoiceDetailTable({ items, total }: InvoiceDetailTableProps) {
   return (
-    <div className="rounded-t-lg overflow-hidden bg-background-light dark:bg-[#252945]">
+    <div className="rounded-t-lg overflow-hidden bg-background-light dark:bg-secondary-dark-light">
       <div className="hidden md:grid grid-cols-[3fr_1fr_1.5fr_1.5fr] p-8 pb-4 text-sm font-medium text-text-gray dark:text-text-gray-light">
         <p>Item Name</p><p className="text-center">QTY.</p><p className="text-right">Price</p><p className="text-right">Total</p>
       </div>
