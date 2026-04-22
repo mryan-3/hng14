@@ -17,7 +17,7 @@ export default function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
   return (
     <button 
       onClick={onToggle}
-      className="flex items-center justify-center w-20 h-20 transition-colors hover:text-white group lg:w-full"
+      className="flex items-center justify-center w-[72px] h-full transition-colors hover:text-white group lg:w-full lg:h-20"
       aria-label="Toggle Theme"
     >
       <div className="relative w-5 h-5">

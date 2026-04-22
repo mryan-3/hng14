@@ -26,9 +26,9 @@ export default function Sidebar() {
   return (
     <aside className="fixed top-0 left-0 z-50 flex flex-row items-center justify-between w-full h-[72px] bg-sidebar-bg lg:flex-col lg:w-[103px] lg:h-full lg:rounded-r-[20px] transition-all duration-300">
       <Logo />
-      <div className="flex flex-row items-center lg:flex-col lg:w-full lg:pb-6">
+      <div className="flex flex-row items-center lg:flex-col lg:w-full lg:pb-6 h-full">
         <ThemeToggle theme={(currentMode as 'light' | 'dark')} onToggle={toggleTheme} />
-        <div className="w-px h-20 bg-[#494E6E] lg:w-full lg:h-px" />
+        <div className="w-[1px] h-full bg-[#494E6E] lg:w-full lg:h-[1px]" />
         <UserAvatar />
       </div>
     </aside>
