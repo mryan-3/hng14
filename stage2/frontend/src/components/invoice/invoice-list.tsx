@@ -3,7 +3,7 @@
 
 import Image from 'next/image';
 import InvoiceCard from '@/components/invoice/invoice-card';
-import { Invoice } from '@/lib/mock-invoices';
+import { Invoice } from '@/context/invoice-context';
 
 interface InvoiceListProps {
   invoices: Invoice[];
@@ -17,7 +17,7 @@ export default function InvoiceList({ invoices }: InvoiceListProps) {
           <InvoiceCard
             key={invoice.id}
             id={invoice.id}
-            dueDate={invoice.dueDate}
+            dueDate={invoice.paymentDue}
             clientName={invoice.clientName}
             amount={invoice.total}
             status={invoice.status}

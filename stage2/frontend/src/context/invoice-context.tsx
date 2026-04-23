@@ -19,40 +19,6 @@ export interface Invoice {
   total: number;
 }
 
-const MOCK_INVOICES: Invoice[] = [
-  {
-    id: 'RT3080',
-    createdAt: '19 Aug 2021',
-    paymentDue: '19 Sep 2021',
-    description: 'Re-branding',
-    paymentTerms: 30,
-    clientName: 'Jensen Huang',
-    clientEmail: 'jensenh@nvidia.com',
-    status: 'paid',
-    senderAddress: { street: '19 Union Terrace', city: 'London', postCode: 'E1 3EZ', country: 'United Kingdom' },
-    clientAddress: { street: '106 Kendell Street', city: 'Sharrington', postCode: 'NR24 2WT', country: 'United Kingdom' },
-    items: [{ name: 'Brand Guidelines', qty: 1, price: 1800.90, total: 1800.90 }],
-    total: 1800.90
-  },
-  {
-    id: 'XM9141',
-    createdAt: '21 Aug 2021',
-    paymentDue: '20 Sep 2021',
-    description: 'Graphic Design',
-    paymentTerms: 30,
-    clientName: 'Alex Grim',
-    clientEmail: 'alexgrim@mail.com',
-    status: 'pending',
-    senderAddress: { street: '19 Union Terrace', city: 'London', postCode: 'E1 3EZ', country: 'United Kingdom' },
-    clientAddress: { street: '84 Church Way', city: 'Bradford', postCode: 'BD1 9PB', country: 'United Kingdom' },
-    items: [
-      { name: 'Banner Design', qty: 1, price: 156.00, total: 156.00 },
-      { name: 'Email Design', qty: 2, price: 200.00, total: 400.00 }
-    ],
-    total: 556.00
-  }
-];
-
 interface InvoiceContextType {
   invoices: Invoice[];
   isLoaded: boolean;
@@ -76,10 +42,10 @@ export function InvoiceProvider({ children }: { children: React.ReactNode }) {
       try {
         setInvoices(JSON.parse(stored));
       } catch (e) {
-        setInvoices(MOCK_INVOICES);
+        setInvoices([]);
       }
     } else {
-      setInvoices(MOCK_INVOICES);
+      setInvoices([]);
     }
     setIsLoaded(true);
   }, []);

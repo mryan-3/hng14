@@ -1,7 +1,7 @@
 // Moved from components/app to components/invoice
 'use client';
 
-import { InvoiceItem } from '@/lib/mock-invoices';
+import { Item as InvoiceItem } from '@/components/forms/item-row';
 
 interface InvoiceDetailItemsProps {
   items: InvoiceItem[];
