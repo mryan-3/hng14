@@ -7,3 +7,6 @@
 [submodule "stage3/frontend-pwa"]
 	path = stage3/frontend-pwa
 	url = git@github.com:mryan-3/hng-habit-tracker.git
+[submodule "stage3/web-portal"]
+	path = stage3/web-portal
+	url = git@github.com:mryan-3/hng-insighta-web.git
