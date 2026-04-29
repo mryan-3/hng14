@@ -1,0 +1,3 @@
+[submodule "stage3/backend"]
+	path = stage3/backend
+	url = git@github.com:mryan-3/hng-insighta-backend.git
