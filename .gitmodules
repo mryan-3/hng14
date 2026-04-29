@@ -1,3 +1,6 @@
 [submodule "stage3/backend"]
 	path = stage3/backend
 	url = git@github.com:mryan-3/hng-insighta-backend.git
+[submodule "stage3/cli"]
+	path = stage3/cli
+	url = git@github.com:mryan-3/hng-insighta-cli.git
