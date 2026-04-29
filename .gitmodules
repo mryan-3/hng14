@@ -4,3 +4,6 @@
 [submodule "stage3/cli"]
 	path = stage3/cli
 	url = git@github.com:mryan-3/hng-insighta-cli.git
+[submodule "stage3/frontend-pwa"]
+	path = stage3/frontend-pwa
+	url = git@github.com:mryan-3/hng-habit-tracker.git
