@@ -10,3 +10,6 @@
 [submodule "stage3/web-portal"]
 	path = stage3/web-portal
 	url = git@github.com:mryan-3/hng-insighta-web.git
+[submodule "stage4/extension"]
+	path = stage4/extension
+	url = git@github.com:mryan-3/tldr.git
