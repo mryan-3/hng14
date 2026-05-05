@@ -13,3 +13,6 @@
 [submodule "stage4/extension"]
 	path = stage4/extension
 	url = git@github.com:mryan-3/tldr.git
+[submodule "stage4/vault"]
+	path = stage4/vault
+	url = git@github.com:mryan-3/vault.git
